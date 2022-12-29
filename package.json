@@ -1,5 +1,5 @@
 {
-  "name": "feelings-detangler",
+  "name": "feelings-menu",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,12 +16,15 @@
     "framer-motion": "^6.5.1",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^3.11.0",
+    "react-intersection-observer": "^9.4.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yaml": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -62,5 +65,8 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.1"
-  }
+  },
+  "browser": {
+    "fs": false
+ } 
 }
