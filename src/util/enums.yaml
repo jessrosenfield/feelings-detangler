@@ -1,8 +1,186 @@
 ---
 feelingsWheelFeelings:
-  - foobar
-unmetNeedsFeelings:
-  afraid:
+  - value: bad
+    items:
+      - value: bored//
+        items:
+        - indifferent
+        - apathetic
+      - value: busy
+        items:
+        - pressured
+        - rushed
+      - value: stressed
+        items:
+        - overwhelmed
+        - out of control
+      - value: tired
+        items:
+        - sleepy
+        - unfocused
+  - value: fearful
+    items:
+    - value: scared
+      items:
+      - helpless
+      - frightened
+    - value: anxious
+      items:
+      - overwhelmed
+      - worried
+    - value: insecure
+      items:
+      - inadequate
+      - inferior
+    - value: weak
+      items:
+      - worthless
+      - insignificant
+    - value: rejected
+      items:
+      - excluded
+      - persecuted
+    - value: threatened
+      items:
+      - nervous
+      - exposed
+  - value: angry
+    items:
+    - value: let down
+      items:
+      - betrayed
+      - distressed
+    - value: humiliated
+      items:
+      - disrespected
+      - ridiculous
+    - value: bitter
+      items:
+      - indignant
+      - violated
+    - value: mad
+      items:
+      - furious
+      - jealous
+    - value: aggressive
+      items:
+      - provoked
+      - hostile
+    - value: frustrated
+      items:
+      - infuriated
+      - annoyed
+    - value: distant
+      items:
+      - withdrawn
+      - numb
+    - value: critical
+      items:
+      - skeptical
+      - dismissive
+  - value: disgusted
+    items:
+    - value: disapproving
+      items:
+      - judgemental
+      - cringe (fka embarassed)
+    - value: disappointed
+      items:
+      - appalled
+      - revolted
+    - value: awful
+      items:
+      - nauseated
+      - detestable
+    - value: repelled
+      items:
+      - horrified
+      - hesitant
+  - value: sad
+    items:
+    - value: hurt
+      items:
+      - embarassed
+      - disappointed
+    - value: depressed
+      items:
+      - inferior
+      - empty
+    - value: guilty
+      items:
+      - remorseful
+      - ashamed
+    - value: despair
+      items:
+      - powerless
+      - grief
+    - value: vulnerable
+      items:
+      - fragile
+      - victimized
+    - value: lonely
+      items:
+      - abandoned
+      - isolated
+  - value: happy
+    items:
+    - value: playful
+      items:
+      - aroused
+      - cheeky
+    - value: content
+      items:
+      - free
+      - joyfull
+    - value: interested
+      items:
+      - curious
+      - inquisitive
+    - value: proud
+      items:
+      - successful
+      - confident
+    - value: accepted
+      items:
+      - respected
+      - valued
+    - value: powerful
+      items:
+      - courageous
+      - creative
+    - value: peaceful
+      items:
+      - loving
+      - thankful
+    - value: trusting
+      items:
+      - sensitive
+      - intimate
+    - value: optimistic
+      items:
+      - hopeful
+      - inspired
+  - value: surprised
+    items:
+    - value: startled
+      items:
+      - shocked
+      - dismayed
+    - value: confused
+      items:
+      - disillusioned
+      - perplexed
+    - value: amazed
+      items:
+      - astonished
+      - awe
+    - value: excited
+      items:
+      - eager
+      - energetic
+nvcUnmetNeedsFeelings:
+  - value: afraid
+    items:
     - apprehensive
     - dread
     - foreboding
@@ -14,7 +192,8 @@ unmetNeedsFeelings:
     - terrified
     - wary
     - worried
-  annoyed:
+  - value: annoyed
+    items:
     - aggravated
     - dismayed
     - disgruntled
@@ -22,13 +201,15 @@ unmetNeedsFeelings:
     - frustrated
     - impatient
     - irked
-  angry:
+  - value: angry
+    items:
     - enraged
     - furious
     - incensed
     - irritated
     - irked
-  aversion:
+  - value: aversion
+    items:
     - animosity
     - apalled
     - contempt
@@ -38,7 +219,8 @@ unmetNeedsFeelings:
     - horrified
     - hostile
     - repulsed
-  confused:
+  - value: confused
+    items:
     - ambivalent
     - baffled
     - bewildered
@@ -49,7 +231,8 @@ unmetNeedsFeelings:
     - perplexed
     - puzzled
     - torn
-  disconnected:
+  - value: disconnected
+    items:
     - alienated
     - aloof
     - apathetic
@@ -62,7 +245,8 @@ unmetNeedsFeelings:
     - numb
     - removed
     - withdrawn
-  disquiet:
+  - value: disquiet
+    items:
     - agitated
     - alarmed
     - discombobulated
@@ -82,14 +266,16 @@ unmetNeedsFeelings:
     - unnerved
     - unsettled
     - upset
-  embarrassed:
+  - value: embarrassed
+    items:
     - ashamed
     - chagrined
     - flustered
     - guilty
     - mortified
     - self-concious
-  fatigue:
+  - value: fatigue
+    items:
     - beat
     - burnt out
     - depleted
@@ -100,7 +286,8 @@ unmetNeedsFeelings:
     - tired
     - weary
     - worn out
-  pain:
+  - value: pain
+    items:
     - agony
     - anguished
     - bereaved
@@ -112,7 +299,8 @@ unmetNeedsFeelings:
     - miserable
     - regretful
     - remorseful
-  sad:
+  - value: sad
+    items:
     - depressed
     - dejected
     - despair
@@ -127,7 +315,8 @@ unmetNeedsFeelings:
     - melancholy
     - unhappy
     - wretched
-  tense:
+  - value: tense
+    items:
     - anxious
     - cranky
     - distressed
@@ -141,7 +330,8 @@ unmetNeedsFeelings:
     - overwhelmed
     - restless
     - stressed out
-  vulnerable:
+  - value: vulnerable
+    items:
     - fragile
     - guarded
     - helpless
@@ -150,15 +340,17 @@ unmetNeedsFeelings:
     - reserved
     - sensitive
     - shaky
-  yearning:
+  - value: yearning
+    items:
     - envious
     - jealous
     - longing
     - nostalgic
     - pining
     - wistful
-needs:
-  connection:
+nvcNeeds:
+  - value: connection
+    items:
     - acceptance
     - affection
     - appreciation
@@ -186,14 +378,17 @@ needs:
     - to understand and be understood
     - trust
     - warmth
-  honesty:
+  - value: honesty
+    items:
     - authenticity
     - integrity
     - presence
-  play:
+  - value: play
+    items:
     - joy
     - humor
-  peace:
+  - value: peace
+    items:
     - beauty
     - communion
     - ease
@@ -201,7 +396,8 @@ needs:
     - harmony
     - inspiration
     - order
-  physical well-being:
+  - value: physical well-being
+    items:
     - air
     - food
     - movement/exercise
@@ -211,7 +407,8 @@ needs:
     - shelter
     - touch
     - water
-  meaning:
+  - value: meaning
+    items:
     - awareness
     - celebration of life
     - challenge
@@ -231,7 +428,8 @@ needs:
     - self-expression
     - stimulation
     - understanding
-  autonomy:
+  - value: autonomy
+    items:
     - choice
     - freedom
     - independence

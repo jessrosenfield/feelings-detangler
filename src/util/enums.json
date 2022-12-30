@@ -1,264 +1,648 @@
 {
-  "feelingsWheelFeelings": [
-    "foobar"
-  ],
-  "unmetNeedsFeelings": {
-    "afraid": [
-      "apprehensive",
-      "dread",
-      "foreboding",
-      "frightened",
-      "mistrustful",
-      "panicked",
-      "petrified",
-      "scared",
-      "terrified",
-      "wary",
-      "worried"
+    "feelingsWheelFeelings": [
+      {
+        "value": "bad",
+        "items": [
+          {
+            "value": "bored",
+            "items": [
+              "indifferent",
+              "apathetic"
+            ]
+          },
+          {
+            "value": "busy",
+            "items": [
+              "pressured",
+              "rushed"
+            ]
+          },
+          {
+            "value": "stressed",
+            "items": [
+              "overwhelmed",
+              "out of control"
+            ]
+          },
+          {
+            "value": "tired",
+            "items": [
+              "sleepy",
+              "unfocused"
+            ]
+          }
+        ]
+      },
+      {
+        "value": "fearful",
+        "items": [
+          {
+            "value": "scared",
+            "items": [
+              "helpless",
+              "frightened"
+            ]
+          },
+          {
+            "value": "anxious",
+            "items": [
+              "overwhelmed",
+              "worried"
+            ]
+          },
+          {
+            "value": "insecure",
+            "items": [
+              "inadequate",
+              "inferior"
+            ]
+          },
+          {
+            "value": "weak",
+            "items": [
+              "worthless",
+              "insignificant"
+            ]
+          },
+          {
+            "value": "rejected",
+            "items": [
+              "excluded",
+              "persecuted"
+            ]
+          },
+          {
+            "value": "threatened",
+            "items": [
+              "nervous",
+              "exposed"
+            ]
+          }
+        ]
+      },
+      {
+        "value": "angry",
+        "items": [
+          {
+            "value": "let down",
+            "items": [
+              "betrayed",
+              "distressed"
+            ]
+          },
+          {
+            "value": "humiliated",
+            "items": [
+              "disrespected",
+              "ridiculous"
+            ]
+          },
+          {
+            "value": "bitter",
+            "items": [
+              "indignant",
+              "violated"
+            ]
+          },
+          {
+            "value": "mad",
+            "items": [
+              "furious",
+              "jealous"
+            ]
+          },
+          {
+            "value": "aggressive",
+            "items": [
+              "provoked",
+              "hostile"
+            ]
+          },
+          {
+            "value": "frustrated",
+            "items": [
+              "infuriated",
+              "annoyed"
+            ]
+          },
+          {
+            "value": "distant",
+            "items": [
+              "withdrawn",
+              "numb"
+            ]
+          },
+          {
+            "value": "critical",
+            "items": [
+              "skeptical",
+              "dismissive"
+            ]
+          }
+        ]
+      },
+      {
+        "value": "disgusted",
+        "items": [
+          {
+            "value": "disapproving",
+            "items": [
+              "judgemental",
+              "cringe (fka embarassed)"
+            ]
+          },
+          {
+            "value": "disappointed",
+            "items": [
+              "appalled",
+              "revolted"
+            ]
+          },
+          {
+            "value": "awful",
+            "items": [
+              "nauseated",
+              "detestable"
+            ]
+          },
+          {
+            "value": "repelled",
+            "items": [
+              "horrified",
+              "hesitant"
+            ]
+          }
+        ]
+      },
+      {
+        "value": "sad",
+        "items": [
+          {
+            "value": "hurt",
+            "items": [
+              "embarassed",
+              "disappointed"
+            ]
+          },
+          {
+            "value": "depressed",
+            "items": [
+              "inferior",
+              "empty"
+            ]
+          },
+          {
+            "value": "guilty",
+            "items": [
+              "remorseful",
+              "ashamed"
+            ]
+          },
+          {
+            "value": "despair",
+            "items": [
+              "powerless",
+              "grief"
+            ]
+          },
+          {
+            "value": "vulnerable",
+            "items": [
+              "fragile",
+              "victimized"
+            ]
+          },
+          {
+            "value": "lonely",
+            "items": [
+              "abandoned",
+              "isolated"
+            ]
+          }
+        ]
+      },
+      {
+        "value": "happy",
+        "items": [
+          {
+            "value": "playful",
+            "items": [
+              "aroused",
+              "cheeky"
+            ]
+          },
+          {
+            "value": "content",
+            "items": [
+              "free",
+              "joyfull"
+            ]
+          },
+          {
+            "value": "interested",
+            "items": [
+              "curious",
+              "inquisitive"
+            ]
+          },
+          {
+            "value": "proud",
+            "items": [
+              "successful",
+              "confident"
+            ]
+          },
+          {
+            "value": "accepted",
+            "items": [
+              "respected",
+              "valued"
+            ]
+          },
+          {
+            "value": "powerful",
+            "items": [
+              "courageous",
+              "creative"
+            ]
+          },
+          {
+            "value": "peaceful",
+            "items": [
+              "loving",
+              "thankful"
+            ]
+          },
+          {
+            "value": "trusting",
+            "items": [
+              "sensitive",
+              "intimate"
+            ]
+          },
+          {
+            "value": "optimistic",
+            "items": [
+              "hopeful",
+              "inspired"
+            ]
+          }
+        ]
+      },
+      {
+        "value": "surprised",
+        "items": [
+          {
+            "value": "startled",
+            "items": [
+              "shocked",
+              "dismayed"
+            ]
+          },
+          {
+            "value": "confused",
+            "items": [
+              "disillusioned",
+              "perplexed"
+            ]
+          },
+          {
+            "value": "amazed",
+            "items": [
+              "astonished",
+              "awe"
+            ]
+          },
+          {
+            "value": "excited",
+            "items": [
+              "eager",
+              "energetic"
+            ]
+          }
+        ]
+      }
     ],
-    "annoyed": [
-      "aggravated",
-      "dismayed",
-      "disgruntled",
-      "displeased",
-      "frustrated",
-      "impatient",
-      "irked"
+    "nvcUnmetNeedsFeelings": [
+      {
+        "value": "afraid",
+        "items": [
+          "apprehensive",
+          "dread",
+          "foreboding",
+          "frightened",
+          "mistrustful",
+          "panicked",
+          "petrified",
+          "scared",
+          "terrified",
+          "wary",
+          "worried"
+        ]
+      },
+      {
+        "value": "annoyed",
+        "items": [
+          "aggravated",
+          "dismayed",
+          "disgruntled",
+          "displeased",
+          "frustrated",
+          "impatient",
+          "irked"
+        ]
+      },
+      {
+        "value": "angry",
+        "items": [
+          "enraged",
+          "furious",
+          "incensed",
+          "irritated",
+          "irked"
+        ]
+      },
+      {
+        "value": "aversion",
+        "items": [
+          "animosity",
+          "apalled",
+          "contempt",
+          "disgusted",
+          "dislike",
+          "hate",
+          "horrified",
+          "hostile",
+          "repulsed"
+        ]
+      },
+      {
+        "value": "confused",
+        "items": [
+          "ambivalent",
+          "baffled",
+          "bewildered",
+          "dazed",
+          "hesitant",
+          "lost",
+          "mystified",
+          "perplexed",
+          "puzzled",
+          "torn"
+        ]
+      },
+      {
+        "value": "disconnected",
+        "items": [
+          "alienated",
+          "aloof",
+          "apathetic",
+          "bored",
+          "cold",
+          "detached",
+          "distant",
+          "distracted",
+          "indifferent",
+          "numb",
+          "removed",
+          "withdrawn"
+        ]
+      },
+      {
+        "value": "disquiet",
+        "items": [
+          "agitated",
+          "alarmed",
+          "discombobulated",
+          "disconcerted",
+          "disturbed",
+          "perturbed",
+          "rattled",
+          "restless",
+          "shocked",
+          "startled",
+          "surprised",
+          "troubled",
+          "turbulent",
+          "turmoil",
+          "uncomfortable",
+          "uneasy",
+          "unnerved",
+          "unsettled",
+          "upset"
+        ]
+      },
+      {
+        "value": "embarrassed",
+        "items": [
+          "ashamed",
+          "chagrined",
+          "flustered",
+          "guilty",
+          "mortified",
+          "self-concious"
+        ]
+      },
+      {
+        "value": "fatigue",
+        "items": [
+          "beat",
+          "burnt out",
+          "depleted",
+          "exhausted",
+          "lethargic",
+          "listless",
+          "sleepy",
+          "tired",
+          "weary",
+          "worn out"
+        ]
+      },
+      {
+        "value": "pain",
+        "items": [
+          "agony",
+          "anguished",
+          "bereaved",
+          "devastated",
+          "grief",
+          "heartbroken",
+          "hurt",
+          "lonely",
+          "miserable",
+          "regretful",
+          "remorseful"
+        ]
+      },
+      {
+        "value": "sad",
+        "items": [
+          "depressed",
+          "dejected",
+          "despair",
+          "despondent",
+          "disappointed",
+          "discouraged",
+          "disheartened",
+          "forlorn",
+          "gloomy",
+          "heavy hearted",
+          "hopeless",
+          "melancholy",
+          "unhappy",
+          "wretched"
+        ]
+      },
+      {
+        "value": "tense",
+        "items": [
+          "anxious",
+          "cranky",
+          "distressed",
+          "distraught",
+          "edgy",
+          "fidgety",
+          "frazzled",
+          "irritable",
+          "jittery",
+          "nervous",
+          "overwhelmed",
+          "restless",
+          "stressed out"
+        ]
+      },
+      {
+        "value": "vulnerable",
+        "items": [
+          "fragile",
+          "guarded",
+          "helpless",
+          "insecure",
+          "leery",
+          "reserved",
+          "sensitive",
+          "shaky"
+        ]
+      },
+      {
+        "value": "yearning",
+        "items": [
+          "envious",
+          "jealous",
+          "longing",
+          "nostalgic",
+          "pining",
+          "wistful"
+        ]
+      }
     ],
-    "angry": [
-      "enraged",
-      "furious",
-      "incensed",
-      "irritated",
-      "irked"
-    ],
-    "aversion": [
-      "animosity",
-      "apalled",
-      "contempt",
-      "disgusted",
-      "dislike",
-      "hate",
-      "horrified",
-      "hostile",
-      "repulsed"
-    ],
-    "confused": [
-      "ambivalent",
-      "baffled",
-      "bewildered",
-      "dazed",
-      "hesitant",
-      "lost",
-      "mystified",
-      "perplexed",
-      "puzzled",
-      "torn"
-    ],
-    "disconnected": [
-      "alienated",
-      "aloof",
-      "apathetic",
-      "bored",
-      "cold",
-      "detached",
-      "distant",
-      "distracted",
-      "indifferent",
-      "numb",
-      "removed",
-      "withdrawn"
-    ],
-    "disquiet": [
-      "agitated",
-      "alarmed",
-      "discombobulated",
-      "disconcerted",
-      "disturbed",
-      "perturbed",
-      "rattled",
-      "restless",
-      "shocked",
-      "startled",
-      "surprised",
-      "troubled",
-      "turbulent",
-      "turmoil",
-      "uncomfortable",
-      "uneasy",
-      "unnerved",
-      "unsettled",
-      "upset"
-    ],
-    "embarrassed": [
-      "ashamed",
-      "chagrined",
-      "flustered",
-      "guilty",
-      "mortified",
-      "self-concious"
-    ],
-    "fatigue": [
-      "beat",
-      "burnt out",
-      "depleted",
-      "exhausted",
-      "lethargic",
-      "listless",
-      "sleepy",
-      "tired",
-      "weary",
-      "worn out"
-    ],
-    "pain": [
-      "agony",
-      "anguished",
-      "bereaved",
-      "devastated",
-      "grief",
-      "heartbroken",
-      "hurt",
-      "lonely",
-      "miserable",
-      "regretful",
-      "remorseful"
-    ],
-    "sad": [
-      "depressed",
-      "dejected",
-      "despair",
-      "despondent",
-      "disappointed",
-      "discouraged",
-      "disheartened",
-      "forlorn",
-      "gloomy",
-      "heavy hearted",
-      "hopeless",
-      "melancholy",
-      "unhappy",
-      "wretched"
-    ],
-    "tense": [
-      "anxious",
-      "cranky",
-      "distressed",
-      "distraught",
-      "edgy",
-      "fidgety",
-      "frazzled",
-      "irritable",
-      "jittery",
-      "nervous",
-      "overwhelmed",
-      "restless",
-      "stressed out"
-    ],
-    "vulnerable": [
-      "fragile",
-      "guarded",
-      "helpless",
-      "insecure",
-      "leery",
-      "reserved",
-      "sensitive",
-      "shaky"
-    ],
-    "yearning": [
-      "envious",
-      "jealous",
-      "longing",
-      "nostalgic",
-      "pining",
-      "wistful"
-    ]
-  },
-  "needs": {
-    "connection": [
-      "acceptance",
-      "affection",
-      "appreciation",
-      "belonging",
-      "cooperation",
-      "communication",
-      "closeness",
-      "companionship",
-      "compassion",
-      "consideration",
-      "consistency",
-      "empathy",
-      "inclusion",
-      "intimacy",
-      "love",
-      "mutuality",
-      "nurturing",
-      "respect / self-respect",
-      "safety",
-      "security",
-      "stability",
-      "support",
-      "to know and be known",
-      "to see and be seen",
-      "to understand and be understood",
-      "trust",
-      "warmth"
-    ],
-    "honesty": [
-      "authenticity",
-      "integrity",
-      "presence"
-    ],
-    "play": [
-      "joy",
-      "humor"
-    ],
-    "peace": [
-      "beauty",
-      "communion",
-      "ease",
-      "equality",
-      "harmony",
-      "inspiration",
-      "order"
-    ],
-    "physical well-being": [
-      "air",
-      "food",
-      "movement/exercise",
-      "rest/sleep",
-      "sexual expression",
-      "safety (protection from life threatening situations",
-      "shelter",
-      "touch",
-      "water"
-    ],
-    "meaning": [
-      "awareness",
-      "celebration of life",
-      "challenge",
-      "clarity",
-      "competence",
-      "conciousness",
-      "contribution",
-      "creativity",
-      "discovery",
-      "efficacy",
-      "effectiveness",
-      "growth",
-      "learning",
-      "mourning",
-      "participation",
-      "purpose",
-      "self-expression",
-      "stimulation",
-      "understanding"
-    ],
-    "autonomy": [
-      "choice",
-      "freedom",
-      "independence",
-      "space",
-      "spontaneity"
+    "nvcNeeds": [
+      {
+        "value": "connection",
+        "items": [
+          "acceptance",
+          "affection",
+          "appreciation",
+          "belonging",
+          "cooperation",
+          "communication",
+          "closeness",
+          "companionship",
+          "compassion",
+          "consideration",
+          "consistency",
+          "empathy",
+          "inclusion",
+          "intimacy",
+          "love",
+          "mutuality",
+          "nurturing",
+          "respect / self-respect",
+          "safety",
+          "security",
+          "stability",
+          "support",
+          "to know and be known",
+          "to see and be seen",
+          "to understand and be understood",
+          "trust",
+          "warmth"
+        ]
+      },
+      {
+        "value": "honesty",
+        "items": [
+          "authenticity",
+          "integrity",
+          "presence"
+        ]
+      },
+      {
+        "value": "play",
+        "items": [
+          "joy",
+          "humor"
+        ]
+      },
+      {
+        "value": "peace",
+        "items": [
+          "beauty",
+          "communion",
+          "ease",
+          "equality",
+          "harmony",
+          "inspiration",
+          "order"
+        ]
+      },
+      {
+        "value": "physical well-being",
+        "items": [
+          "air",
+          "food",
+          "movement/exercise",
+          "rest/sleep",
+          "sexual expression",
+          "safety (protection from life threatening situations",
+          "shelter",
+          "touch",
+          "water"
+        ]
+      },
+      {
+        "value": "meaning",
+        "items": [
+          "awareness",
+          "celebration of life",
+          "challenge",
+          "clarity",
+          "competence",
+          "conciousness",
+          "contribution",
+          "creativity",
+          "discovery",
+          "efficacy",
+          "effectiveness",
+          "growth",
+          "learning",
+          "mourning",
+          "participation",
+          "purpose",
+          "self-expression",
+          "stimulation",
+          "understanding"
+        ]
+      },
+      {
+        "value": "autonomy",
+        "items": [
+          "choice",
+          "freedom",
+          "independence",
+          "space",
+          "spontaneity"
+        ]
+      }
     ]
   }
-}

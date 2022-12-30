@@ -1,14 +1,17 @@
-import { Box, Flex, FlexProps, forwardRef } from "@chakra-ui/react";
+import { Box, Flex, FlexProps } from "@chakra-ui/react";
 import _debounce from "lodash/debounce";
 import _throttle from "lodash/throttle";
-import React, { UIEventHandler, useCallback, useEffect, useRef } from "react";
+import React, { UIEventHandler, useCallback, useEffect, useRef, useState } from "react";
 
 interface LoopingListProps extends FlexProps {
   children?: JSX.Element[];
   currentIndex: number;
   setCurrentIndex: (index: number) => void;
   maxItemsToShow?: number;
-  itemMinHeight?: number;
+  itemMinHeightPixels?: number;
+  heightPixels?: number;
+  isRecentering: boolean,
+  setIsRecentering: (val: boolean) => void;
 };
 
 export default function LoopingList({
@@ -16,8 +19,10 @@ export default function LoopingList({
   currentIndex,
   setCurrentIndex,
   maxItemsToShow,
-  itemMinHeight,
-  ...props
+  itemMinHeightPixels = 40,
+  heightPixels,
+  isRecentering,
+  setIsRecentering,
 }: LoopingListProps) {
   if (!children || !children.length || children.length <= 1) {
     throw new Error("Looping List requires at least 2 items");
@@ -28,68 +33,128 @@ export default function LoopingList({
       .fill(null)
       .map(() => React.createRef())
   );
-
+  const numItems = children.length;
   const computedItemsToShow = Math.min(
-    maxItemsToShow || children.length + 1,
-    children.length + 1
+    maxItemsToShow || (heightPixels && Math.floor(itemMinHeightPixels/heightPixels)) || children.length,
+    children.length
   );
-  const computedMinHeight = itemMinHeight ? itemMinHeight : 100 / computedItemsToShow;
-  const handleScroll: UIEventHandler<HTMLDivElement> = useCallback((event) => {
-    if (!itemRefs.current || !listRef.current) {
+  const computedContainerHeight = heightPixels || computedItemsToShow * itemMinHeightPixels;
+  const itemHeight = computedContainerHeight && computedItemsToShow && computedContainerHeight/computedItemsToShow;
+  const listHeight = itemHeight * numItems;
+  const containerCenterOffset = computedContainerHeight/2 - itemHeight/2;
+  const [scrollTop, setScrollTop] = useState(listHeight - containerCenterOffset);
+
+  const rotateList = useCallback(_debounce(() => {
+    if (!listRef?.current) {
       return;
     }
-    const currentRef = itemRefs.current[0];
-    if (!currentRef.current) {
-      return;
-    }
-    rotateList();
-    const position = listRef.current.scrollTop / currentRef.current.clientHeight;
-    console.log("setting current index to", Math.floor(position % children.length));
-    setCurrentIndex(Math.floor(position % children.length));
-  }, []);
-  const centerItem = useCallback(_debounce((index) => {
-      console.log("CALLING CENTER_ITEM")
-      if (itemRefs.current && listRef.current) {
-        const indexRef = itemRefs.current[index];
-        if (!indexRef.current) {
-          return;
-        }
-        console.log("scrolling to", index, listRef.current.scrollTop);  
-        indexRef.current.scrollIntoView({
-          behavior: "auto",
-          block: "center",
-          inline: "center",
-        });
-        console.log("done scrolling to", index, listRef.current.scrollTop);  
-      }
-    }, 250),
-    []
-  );
-  const rotateList = useCallback(_throttle(() => {
-    console.log("CALLING ROTATE_LIST")
-    if (!itemRefs.current || !listRef.current) {
-      return;
-    }
-    const firstRef = itemRefs.current[0];
-    if (!firstRef.current) {
-      return;
-    }
-    const itemHeight = firstRef.current.clientHeight;
-    const numItems = children.length;
-    const listHeight = itemHeight * (numItems - 1);
-    const newHeight = (listRef.current.scrollTop % listHeight) + listHeight;
-    if (listRef.current.scrollTop !== newHeight) {
+    const scrollTop = listRef.current.scrollTop;
+    const newHeight = (scrollTop + containerCenterOffset) % listHeight + listHeight - containerCenterOffset;
+    if (scrollTop !== newHeight) {
       listRef.current.scrollTo({
         top: newHeight,
         left: listRef.current.scrollLeft,
         behavior: "auto",
       });
     }
-  }, 10), []);
+    // console.log("managing scroll")
+
+    // FIXME: Gradual updates to selected index (to propogate to other tiers) currently
+    // does not function properly.
+    if (isRecentering) {
+      // console.log("skipping pos set")
+      return;
+    }
+
+    const position = (Math.floor((scrollTop - (listHeight - containerCenterOffset)) / itemHeight) + numItems) % numItems;
+
+    if (position === currentIndex) {
+      // Minor changes in scrolling should bump to the next item if > .25% change.
+      const indexCenteredPosition = currentIndex * itemHeight +listHeight - containerCenterOffset;
+      let diff = (scrollTop - indexCenteredPosition) * 2 / itemHeight
+      if (Math.abs(diff) > .25) {
+        diff = diff > 0 ? 1 : -1;
+      } else {
+        diff = 0;
+      }
+      setCurrentIndex((position + diff + numItems)%numItems);
+
+      console.log("setting", {
+        newHeight,
+        currentIndex,
+        position,
+        numItems,
+      })
+    } else {
+      console.log("setting big", {
+        newHeight,
+        currentIndex,
+        position,
+        numItems,
+      })
+      setCurrentIndex(position);
+    }
+  }, 50), [isRecentering]);
+  const centerItem = 
+    (index: number, smooth=true) => {
+      if (itemRefs?.current && listRef?.current) {
+        const indexRef = itemRefs.current[index];
+        if (!indexRef?.current) {
+          return;
+        }
+        console.log("recentering", index, smooth);
+        const indexCenteredPosition = currentIndex * itemHeight +listHeight - containerCenterOffset;
+        listRef.current.scrollTo({
+          behavior: smooth ? "smooth" : "auto",          
+          top: indexCenteredPosition,
+          left: listRef.current.scrollLeft,
+        });
+      }
+    };
   useEffect(() => {
-    console.log("calling centerItem on ", currentIndex);
+    console.log("received", currentIndex, children[currentIndex].key);
     centerItem(currentIndex);
-  }, [currentIndex, centerItem]);
+    setIsRecentering(false);
+  }, [currentIndex]);
+  useEffect(() => {
+    if (isRecentering) {
+      return;
+    }
+    rotateList();
+  },[scrollTop]);
+  
+  const handleScroll: UIEventHandler<HTMLDivElement> = (event) => {
+    if (!listRef?.current) {
+      return;
+    }
+    setScrollTop(listRef.current.scrollTop);
+  };
+  const loadChildren = ({key, hasRef}: {key?: string, hasRef?: boolean}) => {
+    return children.map((child, index) => {
+      const refArgs: {
+        ref?: React.RefObject<HTMLDivElement>
+      } = {}
+      if (hasRef) {
+        refArgs.ref = itemRefs.current[index];
+      }
+      return (
+        <Box
+          margin="auto"
+          key={key ? `${child.key}-${key}` : child.key}
+          style={child.props.style}
+          onClick={() => {
+            centerItem(index, false);
+            setCurrentIndex(index);
+          }}
+          {...refArgs}
+          width="full"
+          minHeight={`${itemHeight}px`}
+        >
+          {child}
+        </Box>
+      );
+    });
+  };
   return (
     <Flex
       overflow="auto"
@@ -97,46 +162,11 @@ export default function LoopingList({
       flexDirection="column"
       alignItems="center"
       onScroll={handleScroll}
-      {...props}
+      height={computedContainerHeight && `${computedContainerHeight}px`}
     >
-      {children.map((child) => {
-        return (
-          <Box
-            margin="auto"
-            key={child.key + "-overflow-top"}
-            minHeight={computedMinHeight}
-          >
-            {child}
-          </Box>
-        );
-      })}
-      {children.map((child, index) => {
-        return (
-          <Box
-            margin="auto"
-            key={child.key}
-            ref={itemRefs.current[index]}
-            minHeight={computedMinHeight}
-          >
-            {child}
-          </Box>
-        );
-      })}
-      {children.map((child) => {
-        return (
-          <Box
-            margin="auto"
-            key={child.key + "-overflow-bottom"}
-            minHeight={computedMinHeight}
-          >
-            {child}
-          </Box>
-        );
-      })}
+      {loadChildren({key: "overflow-top"})}
+      {loadChildren({hasRef: true})}
+      {loadChildren({key: "overflow-bottom"})}
     </Flex>
   );
 };
-
-// export default forwardRef<LoopingListProps, 'div'>((props , ref) => (
-//   <LoopingList {...props as LoopingListProps}/>
-// ));

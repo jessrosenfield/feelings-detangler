@@ -41,8 +41,8 @@ import _sortBy from "lodash/sortBy";
 import _without from "lodash/without";
 import LoopingList from "../util/LoopingList";
 
-const nvcFeelings = enums.unmetNeedsFeelings;
-const nvcNeeds = enums.needs;
+const nvcFeelings = enums.nvcUnmetNeedsFeelings;
+const nvcNeeds = enums.nvcNeeds;
 
 export default function NVC() {
   const [observations, setObservations] = useState<string>("");
@@ -51,17 +51,6 @@ export default function NVC() {
   const [requests, setRequests] = useState<string>("");
   return (
     <>
-
-<LoopingList height="400px" maxItemsToShow={4} currentIndex={0} setCurrentIndex={(num) => { } }>
-          <span key="hello">hello</span>
-          <span key="hi">hi</span>
-          <span key="hiya">hiya</span>
-          <span key="bye">bye</span>
-          <span key="b yebye">byebye</span>
-          <span key="goodbye">goodbye</span>
-          <span key="adios">adios</span>
-          <span key="nope">nope</span>
-    </LoopingList>
       <h1>Non-Violent Communication</h1>
       <p>
         With this framework we listen inwardly to connect with our own feelings
@@ -202,19 +191,30 @@ function FeelingsModal({
   ) : (
     <Button onClick={onHelpOpen}>Help</Button>
   );
+
+  const feelingsPreview = (
+    <HStack spacing={4}>
+      {feelings.map((item) => (
+        <Tag key={item} borderRadius="full" variant="solid" colorScheme="blue">
+          <TagLabel>{_startCase(item)}</TagLabel>
+          <TagCloseButton onClick={() => setFeelings(_without(feelings, item))} />
+        </Tag>
+      ))}
+    </HStack>
+  );
   return (
-    <ButtonModal key="feelings" label="Feelings">
+    <ButtonModal key="feelings" label="Feelings" preview={feelingsPreview}>
       <Accordion
         allowMultiple
         defaultIndex={_range(Object.keys(nvcFeelings).length)}
       >
         {feelingsInfo}
-        {Object.entries(nvcFeelings).map(([primaryFeeling, subFeelings]) => (
-          <AccordionItem key={primaryFeeling}>
+        {nvcFeelings.map((item) => (
+          <AccordionItem key={item.value}>
             <h2>
               <AccordionButton>
                 <Box as="span" flex="1" textAlign="left">
-                  {_startCase(primaryFeeling)}
+                  {_startCase(item.value)}
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
@@ -222,7 +222,7 @@ function FeelingsModal({
             <StackDivider borderColor="gray.200" />
             <AccordionPanel pb={4}>
               <List spacing={3}>
-                {[primaryFeeling, ...subFeelings].map((value) => {
+                {[item.value, ...item.items].map((value) => {
                   const isSelected = feelings.includes(value);
                   const onToggle = () => {
                     if (isSelected) {
@@ -303,12 +303,12 @@ function NeedsModal({
         defaultIndex={_range(Object.keys(nvcNeeds).length)}
       >
         {needsInfo}
-        {Object.entries(nvcNeeds).map(([primaryNeed, subNeeds]) => (
-          <AccordionItem key={primaryNeed}>
+        {nvcNeeds.map(item => (
+          <AccordionItem key={item.value}>
             <h2>
               <AccordionButton>
                 <Box as="span" flex="1" textAlign="left">
-                  {_startCase(primaryNeed)}
+                  {_startCase(item.value)}
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
@@ -316,7 +316,7 @@ function NeedsModal({
             <StackDivider borderColor="gray.200" />
             <AccordionPanel pb={4}>
               <List spacing={3}>
-                {[primaryNeed, ...subNeeds].map((value) => {
+                {[item.value, ...item.items].map((value) => {
                   const isSelected = needs.includes(value);
                   const onToggle = () => {
                     if (isSelected) {
