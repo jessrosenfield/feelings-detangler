@@ -57,10 +57,11 @@ export default function LoopingList({
         behavior: "auto",
       });
     }
-    // console.log("managing scroll")
 
     // FIXME: Gradual updates to selected index (to propogate to other tiers) currently
     // does not function properly.
+    // console.log("managing scroll")
+    return;
     if (isRecentering) {
       // console.log("skipping pos set")
       return;
@@ -117,9 +118,6 @@ export default function LoopingList({
     setIsRecentering(false);
   }, [currentIndex]);
   useEffect(() => {
-    if (isRecentering) {
-      return;
-    }
     rotateList();
   },[scrollTop]);
   

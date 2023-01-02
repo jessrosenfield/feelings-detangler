@@ -5,18 +5,32 @@ import { Flex, Grid, GridItem } from "@chakra-ui/layout";
 import { convertNestedToTieredValues, TieredValue } from "./util";
 
 const colors = [
-  "#36BA9F",
-  "#00A4B9",
-  "#7672B4",
-  "#AB7BB5",
-  "#CE7C87",
-  "#E2876E",
-  "#E5A44B",
+  {dark: "#36BA9F",
+  light: "#5CC2AE"
+},
+  {dark: "#00A4B9",
+  light: "#15BCCA"
+},
+  {dark: "#7672B4",
+  light: "#8C8CC4"
+},
+  {dark: "#AB7BB5",
+  light: "#B58DC0"
+},
+  {dark: "#CE7C87",
+  light: "#E297A5"
+},
+  {dark: "#E2876E",
+  light: "#EF9783"
+},
+  {dark: "#E5A44B",
+  light: "#ECB45D"
+},
 ];
 
 export default function Wheel() {
   const feelings: TieredValue[][] = useMemo(() => convertNestedToTieredValues(enums.feelingsWheelFeelings), []);
-  const [currentFeeling, setCurrentFeeling] = useState<number[]>(Array(feelings.length).fill(0));
+  const [currentFeeling, setCurrentFeeling] = useState<number[]>(Array(feelings.length).fill([]));
   const [isRecentering, setIsRecentering] = useState<boolean[]>(Array(feelings.length).fill(true));
   useEffect(() => {
     console.log({currentFeeling, isRecentering});
@@ -27,7 +41,7 @@ export default function Wheel() {
     <Grid w="100%" templateColumns={`repeat(${feelings.length}, 1fr)`}>
       {feelings.map((tier: TieredValue[], tierIndex: number) => {
         const items = tier.map(item => (
-          <span style={{color: 'white', backgroundColor: colors[item.dims[0]]}} key={
+          <span style={{color: 'white', backgroundColor: colors[item.dims[0]][tierIndex > 0 && item.dims[1]%2 === 0 ? "light" : "dark"]}} key={
             item.dims.slice(0, tierIndex+1).map((dim, dimIndex) => feelings[dimIndex][dim].value).join("-")
           }>{item.value}</span>
         ));
