@@ -18,6 +18,7 @@ import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import NVC from "./nvc/NVC";
 import theme from "./theme";
 import Wheel from "./wheel/Wheel";
+import OriginalWheel from "./wheel/OriginalWheel";
 
 export const App = () => {
   const listRef = React.useRef(null);
@@ -36,7 +37,7 @@ export const App = () => {
 
             <TabPanels>
               <TabPanel>
-                <Wheel/>
+                <OriginalWheel/>
               </TabPanel>
               <TabPanel>
                 <NVC/>

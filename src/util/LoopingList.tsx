@@ -113,7 +113,7 @@ export default function LoopingList({
       }
     };
   useEffect(() => {
-    console.log("received", currentIndex, children[currentIndex].key);
+    // console.log("received", currentIndex, children[currentIndex].key);
     centerItem(currentIndex);
     setIsRecentering(false);
   }, [currentIndex]);
